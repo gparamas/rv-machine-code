@@ -5,4 +5,5 @@ int main() {
 	for(int i = 0; i < 100; i++) {
 		a += 1;
 	}
+	return a;
 }
