@@ -2,6 +2,7 @@
 
 int main() {
 	int a = 0;
-	int b = 10;
-	int c = a + b;
+	for(int i = 0; i < 100; i++) {
+		a += 1;
+	}
 }
