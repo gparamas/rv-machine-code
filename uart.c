@@ -9,13 +9,13 @@ int uart_tx_fifo_full() {
 }
 
 int uart_indata_ready() {
-	return (uart0->status % 0x01);
+	return (uart0->status & 0x01);
 }
 
 int uart_putchar(const char c) {
 	while(uart_tx_fifo_full()) {
 	}
-        uart0->write = c & 0x00000011;
+        uart0->write = c & 0x000000FF;
 }
 
 char uart_readchar() {
