@@ -3,7 +3,7 @@
 #ifndef UART_H
 #define UART_H
 
-#define UART_BASE 0x33000
+#define UART_BASE 0x34000
 
 typedef struct {
 	volatile uint8_t status;

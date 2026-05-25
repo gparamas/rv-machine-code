@@ -1,7 +1,7 @@
 MEMORY {
 	instr (r) : ORIGIN = 0, LENGTH = 32k
 	ram (rwx) : ORIGIN = 0x8000, LENGTH = 175k
-	mmio (rwx) : ORIGIN = 0x33000, LENGTH = 1k
+	mmio (rwx) : ORIGIN = 0x34000, LENGTH = 1k
 }
 
 SECTIONS 
