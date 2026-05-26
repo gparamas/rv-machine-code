@@ -1,6 +1,6 @@
 MEMORY {
 	instr (r) : ORIGIN = 0, LENGTH = 32k
-	ram (rwx) : ORIGIN = 0x8000, LENGTH = 175k
+	ram (rwx) : ORIGIN = 0x8000, LENGTH = 128k
 	mmio (rwx) : ORIGIN = 0x34000, LENGTH = 1k
 }
 
