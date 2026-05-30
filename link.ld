@@ -21,7 +21,7 @@ SECTIONS
 		*(COMMON)
 	} /*> ram*/ > instr
 	_end = .;
-	_stack_top = ORIGIN(ram) + LENGTH(ram);
+	_stack_top = LENGTH(ram);
 }
 		
 
