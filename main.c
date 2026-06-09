@@ -1,7 +1,7 @@
 #include "uart.h"
 
 int main() {
-	char a = uart_is_busy();
-	char c = uart_indata_ready();
-	uart_putchar('a');
+	for(int i = 0; i < 100; i++) {
+		uart_putchar(i);
+	}
 }
