@@ -1,6 +1,6 @@
 MEMORY {
-	instr (r) : ORIGIN = 0, LENGTH = 32k
-	ram (rwx) : ORIGIN = 0x8000, LENGTH = 128k
+	instr (r) : ORIGIN = 0x0, LENGTH = 32k
+	ram (rwx) : ORIGIN = 0x0, LENGTH = 128k
 	mmio (rwx) : ORIGIN = 0x34000, LENGTH = 1k
 }
 
@@ -12,14 +12,16 @@ SECTIONS
 		*(.text*)
 		*(.rodata*)
 	} > instr
+	_global_pointer = . + 0x800;
 	.data : {
 		*(.data*)
-	} /*> ram*/ > instr
+		*(.sdata*)
+	} > ram
 	_bss_start = .;
 	.bss : {
 		*(.bss*)
 		*(COMMON)
-	} /*> ram*/ > instr
+	} > ram
 	_end = .;
 	_stack_top = LENGTH(ram);
 }
