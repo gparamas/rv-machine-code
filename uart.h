@@ -6,13 +6,13 @@
 #define UART_BASE 0x34000
 
 typedef struct {
-	volatile uint8_t status;
-	volatile uint8_t error;
-	volatile uint8_t data_size;
-	volatile uint8_t lbit_period;
-	volatile uint8_t hbit_period;
-	volatile uint8_t write;
-	volatile uint8_t read;
+	volatile uint32_t status;
+	volatile uint32_t error;
+	volatile uint32_t data_size;
+	volatile uint32_t lbit_period;
+	volatile uint32_t hbit_period;
+	volatile uint32_t write;
+	volatile uint32_t read;
 } uart_t;
 
 #define uart0 ((uart_t*) UART_BASE)

@@ -18,10 +18,10 @@
 #define RDSCUR_CMD 0x2B
 
 typedef struct {
-	volatile uint8_t status;
-       	volatile uint8_t config;
-	volatile uint8_t read_data;
-	volatile uint8_t write_data;
+	volatile uint32_t status;
+       	volatile uint32_t config;
+	volatile uint32_t read_data;
+	volatile uint32_t write_data;
 } qspi_t;
 
 #define qspi0 ((qspi_t*) QSPI_BASE)
