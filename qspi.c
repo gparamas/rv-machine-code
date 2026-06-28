@@ -24,7 +24,7 @@ inline void send_cmd(uint32_t cmd, uint32_t num_read, uint32_t num_send) {
 }
 
 inline uint32_t read_data() {
-	while(!qspi_data_ready) {
+	while(!qspi_data_ready()) {
 	}
 	return qspi0->read_data;
 }
@@ -50,11 +50,11 @@ uint32_t send_rdsr(int wait_busy) {
 	if(wait_busy) {
 		send_cmd(RDSR_CMD, 0xFFFFFFFF, 0);
 		while(1) {
-			while(!qspi_data_ready) {
+			while(!qspi_data_ready()) {
 			}
 			if(!(qspi0->read_data & 0x1)) {
 				qspi0->config = 0x1;
-				while(qspi_module_busy) {
+				while(qspi_module_busy()) {
 				}
 				return 0;
 			}
@@ -62,7 +62,7 @@ uint32_t send_rdsr(int wait_busy) {
 	}
 	else {
 		send_cmd(RDSR_CMD, 1, 0);
-		while(!qspi_data_ready) {
+		while(!qspi_data_ready()) {
 		}
 		return qspi0->read_data;
 	}
@@ -89,7 +89,7 @@ void send_4read_XIP(uint8_t toggle_bits, uint32_t num_read, uint32_t addr, uint3
 }
 
 inline void write_data(uint32_t data) {
-	while(qspi_fifo_full) {
+	while(qspi_fifo_full()) {
 	}
 	qspi0->write_data = data;
 }
@@ -120,6 +120,6 @@ void send_erase(uint32_t erase_code, uint32_t addr) {
 	qspi0->write_data = (addr >> 8) & 0xFF;
 	qspi0->write_data = (addr >> 16) & 0xFF;
 
-	while(qspi_module_busy) {
+	while(qspi_module_busy()) {
 	}
 }
